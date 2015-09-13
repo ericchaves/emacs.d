@@ -16,3 +16,6 @@ site-lisp/adventur-mode
 /var/
 /.sx/
 /ensime/
+network-security.data
+recentf
+history
