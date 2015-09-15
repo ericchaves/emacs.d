@@ -16,7 +16,6 @@
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))
   (when (fboundp mode) (funcall mode -1)))
 
-
 ;; No splash screen please ...
 (setq inhibit-startup-message t)
 
@@ -36,7 +35,7 @@
 (load custom-file)
 
 ; Set custom theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'zenburn t)
 
 ;; Write backup files to own directory
@@ -55,6 +54,8 @@
   (packages-install
    '(dockerfile-mode
      elisp-slime-nav
+     helm
+     helm-projectile
      highlight-escape-sequences
      js2-refactor
      js2-mode
@@ -62,13 +63,14 @@
      markdown-mode
      nodejs-repl
      paredit
+     projectile
      restclient
      simple-httpd
      smartparens
      smooth-scrolling
      undo-tree
      whitespace-cleanup-mode
-     yasnippet
+;     yasnippet
      )))
 
 (condition-case nil
@@ -78,7 +80,7 @@
    (init--install-packages)))
 
 ;; Lets start with a smattering of sanity
-(require 'sane-defaults)
+;(require 'sane-defaults)
 
 ;; Setup environment variables from the user's shell.
 (when is-mac
@@ -86,21 +88,26 @@
   (exec-path-from-shell-initialize))
 
 ;; Setup extensions
-(require 'setup-dockerfile)
-(eval-after-load 'ido '(require 'setup-ido))
-(eval-after-load 'org '(require 'setup-org))
-(eval-after-load 'dired '(require 'setup-dired))
-(eval-after-load 'magit '(require 'setup-magit))
-(eval-after-load 'grep '(require 'setup-rgrep))
-(eval-after-load 'shell '(require 'setup-shell))
-;(require 'setup-hippie)
-;(require 'setup-yasnippet)
-;(require 'setup-perspective)
-;(require 'setup-ffip)
-;(require 'setup-html-mode)
-(require 'setup-paredit)
-(require 'setup-markdown)
-(require 'setup-js2-mode)
+; (eval-after-load 'ido '(require 'setup-ido))
+; (eval-after-load 'org '(require 'setup-org))
+; (eval-after-load 'dired '(require 'setup-dired))
+; (eval-after-load 'magit '(require 'setup-magit))
+; (eval-after-load 'grep '(require 'setup-rgrep))
+
+;(eval-after-load 'shell '(require 'setup-shell))
+
+(require 'setup-projectile)
+(require 'setup-helm)
+
+; (require 'setup-dockerfile)
+; (require 'setup-hippie)
+; ;(require 'setup-yasnippet)
+; ;(require 'setup-perspective)
+; ;(require 'setup-ffip)
+; ;(require 'setup-html-mode)
+; (require 'setup-paredit)
+; (require 'setup-markdown)
+; (require 'setup-js2-mode)
 
 ;; Emacs server
 (require 'server)
