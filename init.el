@@ -29,7 +29,6 @@
       (expand-file-name "settings" user-emacs-directory))
 
 ;; And add them to load-path
-;;(dolist (p '(settings-dir site-lisp-dir)) (load-path p))
 (add-to-list 'load-path settings-dir)
 (add-to-list 'load-path site-lisp-dir)
 
@@ -58,7 +57,9 @@
    '(dockerfile-mode
      elisp-slime-nav
      highlight-escape-sequences
-   	 magit
+     js2-refactor
+     js2-mode
+     magit
      markdown-mode
      nodejs-repl
      paredit
@@ -68,6 +69,7 @@
      smooth-scrolling
      undo-tree
      whitespace-cleanup-mode
+     yasnippet
      )))
 
 (condition-case nil
@@ -85,7 +87,21 @@
   (exec-path-from-shell-initialize))
 
 ;; Setup extensions
-
+(require 'setup-dockerfile)
+(eval-after-load 'ido '(require 'setup-ido))
+(eval-after-load 'org '(require 'setup-org))
+(eval-after-load 'dired '(require 'setup-dired))
+(eval-after-load 'magit '(require 'setup-magit))
+(eval-after-load 'grep '(require 'setup-rgrep))
+(eval-after-load 'shell '(require 'setup-shell))
+;(require 'setup-hippie)
+;(require 'setup-yasnippet)
+;(require 'setup-perspective)
+;(require 'setup-ffip)
+;(require 'setup-html-mode)
+(require 'setup-paredit)
+(require 'setup-markdown)
+(require 'setup-js2-mode)
 
 ;; Emacs server
 (require 'server)
