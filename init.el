@@ -38,9 +38,19 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'zenburn t)
 
-(setq auto-save-default nil)
-(setq make-backup-files nil)
-(setq backup-inhibited t)
+; manage backups, autosave and disable lock files
+(setq backup-directory-alist '((".*" . "~/.emacs.d/backups")))
+(setq version-control t)
+(setq delete-old-versions t)
+
+(setq auto-save-list-file-prefix "~/.emacs.d/autosave/")
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+
+(setq create-lockfiles nil)
+
+;(setq auto-save-default nil)
+;(setq make-backup-files nil)
+;(setq backup-inhibited t)
 
 ;; Write backup files to own directory
 ;(setq backup-directory-alist 
@@ -113,6 +123,8 @@
 (require 'setup-paredit)
 (require 'setup-rainbow-delimiters)
 (require 'setup-clojars-search)
+(require 'setup-circe)
+(require 'setup-magit)
 
 ;(require 'setup-dockerfile)
 ;(require 'setup-hippie)
