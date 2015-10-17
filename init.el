@@ -38,10 +38,13 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-emacs-directory))
 (load-theme 'zenburn t)
 
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+(setq backup-inhibited t)
+
 ;; Write backup files to own directory
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
+;(setq backup-directory-alist 
+;      `(("." . "~/.emacs.d/backups")))
 
 ;; Are we on a mac?
 (setq is-mac (equal system-type 'darwin))
@@ -49,14 +52,21 @@
 ;; Setup packages
 (require 'setup-packages)
 
+(add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+
 ;; Install extensions if they're missing
 (defun init--install-packages ()
   (packages-install
    '(dockerfile-mode
+     cider
+     circe
+     clojure-mode
+     clojurescript-mode
      elisp-slime-nav
      helm
      helm-projectile
      highlight-escape-sequences
+     json
      js2-refactor
      js2-mode
      magit
@@ -64,8 +74,9 @@
      nodejs-repl
      paredit
      projectile
-     restclient
-     simple-httpd
+     rainbow-delimiters
+     rainbow-mode
+     request
      smartparens
      smooth-scrolling
      undo-tree
@@ -98,14 +109,17 @@
 
 (require 'setup-projectile)
 (require 'setup-helm)
+(require 'setup-helm-projectile)
+(require 'setup-paredit)
+(require 'setup-rainbow-delimiters)
+(require 'setup-clojars-search)
 
-; (require 'setup-dockerfile)
-; (require 'setup-hippie)
-; ;(require 'setup-yasnippet)
-; ;(require 'setup-perspective)
-; ;(require 'setup-ffip)
-; ;(require 'setup-html-mode)
-; (require 'setup-paredit)
+;(require 'setup-dockerfile)
+;(require 'setup-hippie)
+;;(require 'setup-yasnippet)
+;;(require 'setup-perspective)
+;;(require 'setup-ffip)
+;;(require 'setup-html-mode)
 ; (require 'setup-markdown)
 ; (require 'setup-js2-mode)
 

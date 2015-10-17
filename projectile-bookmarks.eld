@@ -1,1 +1,1 @@
-("~/.emacs.d/")
+("~/.emacs.d/" "~/Projects/cljs/simple-aws-captcha/" "~/Projects/cljs/simple-cljs-captcha/" "~/Projects/cljs/cljs-lambda/" "~/Projects/cljs/modern-cljs/" "~/Projects/cljs/my-hello-api/" "~/Projects/cljs/uolet-cljs/")

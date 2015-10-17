@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (help-projectile projectile helm-projectile helm js2-refactor js2-mode exec-path-from-shell uniquify undo-tree smooth-scrooling dockerfile-mode elisp-slime-nav whitespace-cleanup-mode highlight-escape-sequences restclient nodejs-repl simple-httpd smartparens markdown-mode paredit magit))))
+    (circe request rainbow-mode cider rainbow-delimiters clojure-mode clojure clojurescript-mode help-projectile projectile helm-projectile helm js2-refactor js2-mode exec-path-from-shell uniquify undo-tree smooth-scrooling dockerfile-mode elisp-slime-nav whitespace-cleanup-mode highlight-escape-sequences restclient nodejs-repl simple-httpd smartparens markdown-mode paredit magit))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
